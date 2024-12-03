@@ -1,0 +1,202 @@
+[
+  {
+    "_id": 1,
+    "title": "Lavandina Blaženost",
+    "description": "Umirujući sapun sa prirodnim eteričnim uljem lavande za opuštanje kože i uma.",
+    "category": "aromaterapija",
+    "trending": true,
+    "coverImage": "sapun-1.png",
+    "oldPrice": 7.99,
+    "newPrice": 5.99
+  },
+  {
+    "_id": 2,
+    "title": "Piling sa Kafom",
+    "description": "Oživljavajući sapun sa mlevenom kafom za nežan piling i osveženje kože.",
+    "category": "piling",
+    "trending": true,
+    "coverImage": "sapun-2.png",
+    "oldPrice": 8.99,
+    "newPrice": 6.99
+  },
+  {
+    "_id": 3,
+    "title": "Citrusni Udah",
+    "description": "Energizujući sapun sa eteričnim uljima narandže i limuna za osvežavajuće čišćenje.",
+    "category": "osvežavajući",
+    "trending": true,
+    "coverImage": "sapun-3.png",
+    "oldPrice": 6.99,
+    "newPrice": 4.99
+  },
+  {
+    "_id": 4,
+    "title": "Čišćenje sa Ugljem",
+    "description": "Dubinsko čišćenje sa aktivnim ugljem za uklanjanje nečistoća.",
+    "category": "detoks",
+    "trending": false,
+    "coverImage": "sapun-4.png",
+    "oldPrice": 9.99,
+    "newPrice": 7.99
+  },
+  {
+    "_id": 5,
+    "title": "Hranljivi Shea Maslac",
+    "description": "Bogati hidratantni sapun sa shea maslacem za hidrataciju i omekšavanje suve kože.",
+    "category": "hidratantni",
+    "trending": true,
+    "coverImage": "sapun-5.png",
+    "oldPrice": 5.99,
+    "newPrice": 3.99
+  },
+  {
+    "_id": 6,
+    "title": "Čajna Drvca i Aloe Vera",
+    "description": "Umirujući sapun sa uljem čajnog drveta i aloe verom, idealan za osetljivu ili kožu sklonu aknama.",
+    "category": "umirujući",
+    "trending": false,
+    "coverImage": "sapun-6.png",
+    "oldPrice": 8.99,
+    "newPrice": 6.99
+  },
+  {
+    "_id": 7,
+    "title": "Luksuzne Ružine Latice",
+    "description": "Luksuzni sapun obogaćen ružinim laticama i uljem za nežno i mirisno čišćenje.",
+    "category": "luksuzni",
+    "trending": true,
+    "coverImage": "sapun-7.png",
+    "oldPrice": 10.99,
+    "newPrice": 8.99
+  },
+  {
+    "_id": 8,
+    "title": "Osvežavajuća Nana",
+    "description": "Osvežavajući sapun sa uljem nane za rashlađivanje i osvežavanje kože.",
+    "category": "osvežavajući",
+    "trending": true,
+    "coverImage": "sapun-8.png",
+    "oldPrice": 7.99,
+    "newPrice": 5.99
+  },
+  {
+    "_id": 9,
+    "title": "Zob i Med",
+    "description": "Umirujući sapun sa zobi i medom, idealan za smirivanje iritirane ili osetljive kože.",
+    "category": "umirujući",
+    "trending": false,
+    "coverImage": "sapun-9.png",
+    "oldPrice": 6.99,
+    "newPrice": 4.99
+  },
+  {
+    "_id": 10,
+    "title": "Sjaj Lemongrasa",
+    "description": "Sapun sa eteričnim uljem lemongrasa za podmlađujuće čišćenje.",
+    "category": "energizujući",
+    "trending": true,
+    "coverImage": "sapun-10.png",
+    "oldPrice": 5.99,
+    "newPrice": 3.99
+  },
+  {
+    "_id": 11,
+    "title": "Vanila Krema",
+    "description": "Kremasti sapun sa slatkim mirisom vanile za meku i mirisnu kožu.",
+    "category": "hidratantni",
+    "trending": true,
+    "coverImage": "sapun-11.png",
+    "oldPrice": 6.99,
+    "newPrice": 4.99
+  },
+  {
+    "_id": 12,
+    "title": "Aloe i Krastavac",
+    "description": "Umirujući sapun sa aloe verom i ekstraktom krastavca za osvežavajuće i umirujuće čišćenje.",
+    "category": "umirujući",
+    "trending": true,
+    "coverImage": "sapun-12.png",
+    "oldPrice": 7.99,
+    "newPrice": 5.99
+  },
+  {
+    "_id": 13,
+    "title": "Pačuli Začini",
+    "description": "Zemljani sapun sa uljem pačulija za smelu i jedinstvenu mirisnu notu.",
+    "category": "aromaterapija",
+    "trending": true,
+    "coverImage": "sapun-13.png",
+    "oldPrice": 8.99,
+    "newPrice": 6.99
+  },
+  {
+    "_id": 14,
+    "title": "Kozje Mleko i Med",
+    "description": "Hranljivi sapun sa kozjim mlekom i medom za hidrataciju i negu kože.",
+    "category": "hidratantni",
+    "trending": false,
+    "coverImage": "sapun-14.png",
+    "oldPrice": 9.99,
+    "newPrice": 7.99
+  },
+  {
+    "_id": 15,
+    "title": "Kokosov Povetarac",
+    "description": "Tropski sapun sa kokosovim uljem za dubinsku hidrataciju i čišćenje kože.",
+    "category": "luksuzni",
+    "trending": false,
+    "coverImage": "sapun-15.png",
+    "oldPrice": 6.99,
+    "newPrice": 4.99
+  },
+  {
+    "_id": 16,
+    "title": "Neem i Kurkuma",
+    "description": "Biljni sapun sa neemom i kurkumom za antibakterijske i čisteće benefite.",
+    "category": "detoks",
+    "trending": false,
+    "coverImage": "sapun-16.png",
+    "oldPrice": 8.99,
+    "newPrice": 6.99
+  },
+  {
+    "_id": 17,
+    "title": "Cimet i Karanfilić",
+    "description": "Topli sapun sa uljima cimeta i karanfilića za energiju i osveženje čula.",
+    "category": "aromaterapija",
+    "trending": true,
+    "coverImage": "sapun-17.png",
+    "oldPrice": 7.99,
+    "newPrice": 5.99
+  },
+  {
+    "_id": 18,
+    "title": "Eukaliptus Osveženje",
+    "description": "Energizujući sapun sa uljem eukaliptusa za osvežavajuće i oživljavajuće čišćenje.",
+    "category": "osvežavajući",
+    "trending": true,
+    "coverImage": "sapun-18.png",
+    "oldPrice": 6.99,
+    "newPrice": 4.99
+  },
+  {
+    "_id": 19,
+    "title": "Piling sa Morskom Solju",
+    "description": "Prirodni sapun sa morskom solju za blagi piling i čišćenje kože.",
+    "category": "piling",
+    "trending": true,
+    "coverImage": "sapun-19.png",
+    "oldPrice": 9.99,
+    "newPrice": 7.99
+  },
+  {
+    "_id": 20,
+    "title": "Lemon Verbena",
+    "description": "Citrusni sapun sa eteričnim uljem verbene za osvežavajuće čišćenje.",
+    "category": "energizujući",
+    "trending": false,
+    "coverImage": "sapun-20.png",
+    "oldPrice": 9.99,
+    "newPrice": 8.99
+  }
+]
