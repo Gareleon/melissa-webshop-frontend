@@ -6,6 +6,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { retry } from "@reduxjs/toolkit/query";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/features/cart/cartSlice";
+import Loading from "../../components/Loading";
 
 function SingleSoap() {
   const { id } = useParams();
@@ -18,7 +19,7 @@ function SingleSoap() {
   };
 
   if (isLoading) {
-    return <p>Proizvod se učituje...</p>;
+    return <Loading />;
   }
   if (isError) {
     return <pr>Greška prilikom učitavanja proizvoda...</pr>;
@@ -34,7 +35,7 @@ function SingleSoap() {
           <Link to={`/soaps/${soap._id}`}>
             <img
               src={`${getImgUrl(soap?.coverImage)}`}
-              alt=""
+              alt={soap?.title}
               className="img-fluid md:h-[18rem] md:w-[15rem]  bg-cover p-2 rounded-md cursor-pointer hover:scale-105 transition-all duration-200"
             />
           </Link>
@@ -46,11 +47,11 @@ function SingleSoap() {
             Objavljen: {new Date(soap?.createdAt).toLocaleDateString()}
           </p>
           <p className="font-medium mb-5">
-            {"$"}
             {soap?.newPrice}
+            {" RSD"}
             <span className="line-through font-normal ml-2">
-              {"$"}
               {soap?.oldPrice}
+              {" RSD"}
             </span>
           </p>
           <div className="flex justify-center items-center">
@@ -59,7 +60,7 @@ function SingleSoap() {
               className="bg-primary h-fit w-fit text-white rounded-md p-3 flex items-center gap-1 hover:text-white hover:bg-secondary "
             >
               <FiShoppingCart className="size-7" />
-              <span className="font-semibold">Add to Cart</span>
+              <span className="font-semibold">Dodaj u korpu</span>
             </button>
           </div>
         </div>

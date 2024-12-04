@@ -20,7 +20,7 @@ const cartSlice = createSlice({
           icon: "success",
           title: "Proizvod dodat u korpu!",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 1000,
         });
       } else {
         Swal.fire({

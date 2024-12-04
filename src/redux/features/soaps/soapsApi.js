@@ -4,12 +4,13 @@ import getBaseUrl from "../../../utils/baseURL";
 const baseQuery = fetchBaseQuery({
   baseUrl: `${getBaseUrl()}/api/soaps`,
   credentials: "include",
-  prepareHeaders: (Headers) => {
+  prepareHeaders: (headers) => {
     const token = localStorage.getItem("token");
+    console.log(token); //This is correctly logging token...
     if (token) {
-      Headers.set(`Authorization`, `Bearer ${token}`);
+      headers.set(`Authorization`, `Bearer ${token}`);
     }
-    return Headers;
+    return headers;
   },
 });
 
@@ -24,24 +25,21 @@ const soapsApi = createApi({
     }),
     fetchSoapById: builder.query({
       query: (id) => `/${id}`,
-      providesTags: (results, error, id) => [{ type: "Books", id }],
+      providesTags: (result, error, id) => [{ type: "Soaps", id }],
     }),
     addSoap: builder.mutation({
-      query: (newBook) => ({
-        url: `/create-soap`,
+      query: (newSoap) => ({
+        url: `/`,
         method: "POST",
-        body: newBook,
+        body: newSoap,
       }),
       invalidatesTags: ["Soaps"],
     }),
     editSoap: builder.mutation({
-      query: (id, ...rest) => ({
-        url: `/edit/${id}`,
+      query: ({ id, ...rest }) => ({
+        url: `/${id}`,
         method: "PUT",
         body: rest,
-        headers: {
-          "Content-Type": "application/json",
-        },
       }),
       invalidatesTags: ["Soaps"],
     }),

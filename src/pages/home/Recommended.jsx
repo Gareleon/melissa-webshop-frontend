@@ -12,10 +12,7 @@ import "swiper/css/navigation";
 import { useFetchAllSoapsQuery } from "../../redux/features/soaps/soapsApi";
 
 function Recommended() {
-  const { data: soaps = [], isLoading } = useFetchAllSoapsQuery();
-  if (isLoading) {
-    return <p>Učitavanje proizvoda...</p>;
-  }
+  const { data: soaps = [] } = useFetchAllSoapsQuery();
   return (
     <div className="pb-16">
       <h2 className="text-3xl font-semibold mb-6">Preporučeno za tebe</h2>

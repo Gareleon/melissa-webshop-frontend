@@ -94,7 +94,7 @@ function Cart() {
             <p>${totalPrice}</p>
           </div>
           <p className="mt-0.5 text-sm text-gray-500">
-            Dostava i porez su obračunati prilikom plaćanja.
+            Dostava i porezi su obračunati prilikom plaćanja.
           </p>
           <div className="mt-6">
             <Link

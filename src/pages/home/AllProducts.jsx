@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import ProductCard from "../soaps/ProductCard";
 import { useFetchAllSoapsQuery } from "../../redux/features/soaps/soapsApi";
+import Loading from "../../components/Loading";
 
 // Categories with better handling of values
 const categories = [
@@ -32,7 +33,7 @@ function AllProducts() {
   }, [soaps, selectedCategory]);
 
   if (isLoading) {
-    return <p>Učitavanje proizvoda...</p>;
+    return <Loading />;
   }
 
   return (

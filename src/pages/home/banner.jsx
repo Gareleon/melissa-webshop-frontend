@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -19,9 +20,11 @@ function Banner() {
           projekat mladih čarapana na inicijativu Aleksandrić Miloša, osnivača
           udruženja građana
         </p>
-        <button className="btn-primary text-white">
-          Prijavite se i uštedite
-        </button>
+        <Link to="/register">
+          <button className="btn-primary text-white">
+            Prijavite se i uštedite
+          </button>
+        </Link>
       </div>
       <div className="md:w-1/2 w-full">
         <Swiper

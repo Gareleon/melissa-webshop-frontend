@@ -136,7 +136,7 @@ function Footer() {
           </ul>
         </div>
         <div className="">
-          <h5 className="">Useful Links</h5>
+          <h5 className="">Korisni linkovi</h5>
           <hr
             className="bg-white mb-3"
             style={{ width: "60px", height: "2px" }}

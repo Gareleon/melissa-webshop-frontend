@@ -35,15 +35,23 @@ function AdminLogin() {
         localStorage.setItem("token", auth.token);
         setTimeout(() => {
           localStorage.removeItem("token");
-          alert("Token has expired, Please log in again.");
+          Swal.fire({
+            icon: "warning",
+            title: "Token je istekao",
+            text: "Molimo vas da se ponovo prijavite.",
+          });
           navigate("/");
         }, 3600 * 1000);
       }
 
-      alert("Uspešna prijava administratiora. Dobrodošli!");
+      Swal.fire({
+        icon: "success",
+        title: "Uspešna prijava",
+        text: "Dobrodošli!",
+      });
       navigate("/dashboard");
     } catch (error) {
-      setMessage("Please provide vaild email and password");
+      setMessage("Molimo vas da unesete važeće korisničko ime i šifru.");
       console.log(error);
     }
   };
@@ -94,7 +102,7 @@ function AdminLogin() {
               className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Login
+              Prijavi se
             </button>
           </div>
         </form>

@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
 import { useCreateOrderMutation } from "../../redux/features/orders/ordersAPI";
 import Swal from "sweetalert2";
+import Loading from "../../components/Loading";
 
 function Checkout() {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -43,7 +44,7 @@ function Checkout() {
       await createOrder(newOrder).unwrap();
       Swal.fire({
         title: "Porudžbina je uspešno kreirana!",
-        timer: 3000, // The alert will auto-close after 3 seconds
+        timer: 1500, // The alert will auto-close after 3 seconds
         timerProgressBar: true, // Shows a progress bar while the timer runs
         willClose: () => {
           console.log("The alert is closed!");
@@ -65,7 +66,7 @@ function Checkout() {
   };
 
   if (isLoading) {
-    return <div>Učitavanje...</div>;
+    return <Loading />;
   }
 
   console.log(errors);
@@ -228,11 +229,11 @@ function Checkout() {
                       <label htmlFor="billing_same" className="ml-2">
                         Prihvatam{" "}
                         <Link className="underline text-blue-600">
-                          Terms & Conditions
+                          pravila i uslove
                         </Link>{" "}
-                        and{" "}
+                        i{" "}
                         <Link className="underline text-blue-600">
-                          Shopping Policy.
+                          kupovnu polisu.
                         </Link>
                       </label>
                     </div>

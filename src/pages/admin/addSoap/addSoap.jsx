@@ -23,20 +23,19 @@ const AddSoap = () => {
     try {
       await AddSoap(newSoapData).unwrap();
       Swal.fire({
-        title: "Book added",
-        text: "Your book is uploaded successfully!",
+        title: "Kreiran proizvod",
+        text: "Tvoj proizvod je uspešno kreiran!",
         icon: "success",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, It's Okay!",
+        showConfirmButton: false, // Disable the confirm button
+        timer: 1000, // The alert will disappear after 3 seconds (3000 milliseconds)
+        timerProgressBar: true, // Optional: shows a progress bar for the timer
       });
       reset();
       setimageFileName("");
       setimageFile(null);
     } catch (error) {
       console.error(error);
-      alert("Failed to add book. Please try again.");
+      alert("Neuspešno kreiran proizvod. Pokušajte ponovo.");
     }
   };
 
@@ -49,30 +48,32 @@ const AddSoap = () => {
   };
   return (
     <div className="max-w-lg   mx-auto md:p-6 p-3 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Add New Book</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        Dodaj novi proizvod
+      </h2>
 
       {/* Form starts here */}
       <form onSubmit={handleSubmit(onSubmit)} className="">
         {/* Reusable Input Field for Title */}
         <InputField
-          label="Title"
+          label="Naziv"
           name="title"
-          placeholder="Enter book title"
+          placeholder="Unesi naziv proizvoda"
           register={register}
         />
 
         {/* Reusable Textarea for Description */}
         <InputField
-          label="Description"
+          label="Opis"
           name="description"
-          placeholder="Enter book description"
+          placeholder="Unesi opis proizvoda"
           type="textarea"
           register={register}
         />
 
         {/* Reusable Select Field for Category */}
         <SelectField
-          label="Category"
+          label="Kategorija"
           name="category"
           options={[
             { label: "Izaberi kategoriju", value: "" },
@@ -98,33 +99,33 @@ const AddSoap = () => {
               className="rounded text-blue-600 focus:ring focus:ring-offset-2 focus:ring-blue-500"
             />
             <span className="ml-2 text-sm font-semibold text-gray-700">
-              Trending
+              Popularno
             </span>
           </label>
         </div>
 
         {/* Old Price */}
         <InputField
-          label="Old Price"
+          label="Stara cena"
           name="oldPrice"
           type="number"
-          placeholder="Old Price"
+          placeholder="Stara cena"
           register={register}
         />
 
         {/* New Price */}
         <InputField
-          label="New Price"
+          label="Nova cena"
           name="newPrice"
           type="number"
-          placeholder="New Price"
+          placeholder="Nova cena"
           register={register}
         />
 
         {/* Cover Image Upload */}
         <div className="mb-4">
           <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Cover Image
+            Slika
           </label>
           <input
             type="file"
@@ -133,7 +134,7 @@ const AddSoap = () => {
             className="mb-2 w-full"
           />
           {imageFileName && (
-            <p className="text-sm text-gray-500">Selected: {imageFileName}</p>
+            <p className="text-sm text-gray-500">Izabrano: {imageFileName}</p>
           )}
         </div>
 
@@ -143,9 +144,9 @@ const AddSoap = () => {
           className="w-full py-2 bg-green-500 text-white font-bold rounded-md"
         >
           {isLoading ? (
-            <span className="">Adding.. </span>
+            <span className="">Dodavanje... </span>
           ) : (
-            <span>Add Book</span>
+            <span>Dodaj prozvod</span>
           )}
         </button>
       </form>

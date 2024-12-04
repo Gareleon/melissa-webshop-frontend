@@ -21,17 +21,13 @@ const categories = [
 
 function TopSelling() {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { data: soaps = [], isLoading } = useFetchAllSoapsQuery();
+  const { data: soaps = [] } = useFetchAllSoapsQuery();
 
   const filteredSoaps = useMemo(() => {
     return selectedCategory === ""
       ? soaps
       : soaps.filter((soap) => soap.category === selectedCategory);
   }, [soaps, selectedCategory]);
-
-  if (isLoading) {
-    return <p>Učitavanje proizvoda...</p>;
-  }
 
   return (
     <div className="py-16">

@@ -46,59 +46,71 @@ const EditSoap = () => {
       coverImage: data.coverImage || soapData.coverImage,
     };
     try {
-      await axios.put(`${getBaseUrl()}/api/soaps/edit/${id}`, updateSoapData, {
+      await axios.put(`${getBaseUrl()}/api/soaps/${id}`, updateSoapData, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
       Swal.fire({
-        title: "Book Updated",
-        text: "Your book is updated successfully!",
+        title: "Izmenjen proizvod",
+        text: "Proizvod je uspešno izmenjen!",
         icon: "success",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, It's Okay!",
+        showConfirmButton: false, // Disable the confirm button
+        timer: 1000, // The alert will disappear after 3 seconds (3000 milliseconds)
+        timerProgressBar: true, // Optional: shows a progress bar for the timer
       });
       await refetch();
     } catch (error) {
-      console.log("Failed to update book.");
-      alert("Failed to update book.");
+      //console.log("Neuspešna izmena proizvoda.");
+      alert("Neuspešna izmena proizvoda.");
     }
   };
-  if (isLoading) return <Loading />;
-  if (isError) return <div>Error fetching book data</div>;
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (isError) {
+    return Swal.fire({
+      title: "Greška",
+      text: "Došlo je do greške prilikom izmene proizvoda!",
+      icon: "error",
+      showConfirmButton: true, // Disable the confirm button
+      confirmButtonText: "OK",
+    });
+  }
   return (
     <div className="max-w-lg mx-auto md:p-6 p-3 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Update Book</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Izmeni proizvod</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputField
-          label="Title"
+          label="Naziv"
           name="title"
-          placeholder="Enter book title"
+          placeholder="Unesi naziv proizvoda"
           register={register}
         />
 
         <InputField
-          label="Description"
+          label="Opis"
           name="description"
-          placeholder="Enter book description"
+          placeholder="Unesi opis proizvoda"
           type="textarea"
           register={register}
         />
 
         <SelectField
-          label="Category"
+          label="Kategorija"
           name="category"
           options={[
-            { value: "", label: "Choose A Category" },
-            { value: "business", label: "Business" },
-            { value: "technology", label: "Technology" },
-            { value: "fiction", label: "Fiction" },
-            { value: "horror", label: "Horror" },
-            { value: "adventure", label: "Adventure" },
+            { label: "Izaberi kategoriju", value: "" },
+            { label: "Aromaterapija", value: "aromaterapija" },
+            { label: "Piling", value: "piling" },
+            { label: "Osvežavajući", value: "osvežavajući" },
+            { label: "Detoks", value: "detoks" },
+            { label: "Hidratantni", value: "hidratantni" },
+            { label: "Umirujući", value: "umirujući" },
+            { label: "Luksuzni", value: "luksuzni" },
+            { label: "Energizujući", value: "energizujući" },
           ]}
           register={register}
         />
@@ -110,32 +122,32 @@ const EditSoap = () => {
               className="rounded text-blue-600 focus:ring focus:ring-offset-2 focus:ring-blue-500"
             />
             <span className="ml-2 text-sm font-semibold text-gray-700">
-              Trending
+              Popularno
             </span>
           </label>
         </div>
 
         <InputField
-          label="Old Price"
+          label="Stara cena"
           name="oldPrice"
           type="number"
-          placeholder="Old Price"
+          placeholder="Stara cena"
           register={register}
         />
 
         <InputField
-          label="New Price"
+          label="Nova cena"
           name="newPrice"
           type="number"
-          placeholder="New Price"
+          placeholder="Nova cena"
           register={register}
         />
 
         <InputField
-          label="Cover Image URL"
+          label="Link do slike"
           name="coverImage"
           type="text"
-          placeholder="Cover Image URL"
+          placeholder="Link do slike"
           register={register}
         />
 
@@ -143,7 +155,7 @@ const EditSoap = () => {
           type="submit"
           className="w-full py-2 bg-blue-500 text-white font-bold rounded-md"
         >
-          Update Book
+          Izmeni proizvod
         </button>
       </form>
     </div>

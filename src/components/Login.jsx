@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
+import Swal from "sweetalert2"; // Import SweetAlert2
 
 function Login() {
   const [message, setMessage] = useState("");
@@ -11,34 +12,56 @@ function Login() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
+
   const onSubmit = async (data) => {
-    //console.log(data);
     try {
       await loginUser(data.email, data.password);
-      alert("Login successfully!");
+      Swal.fire({
+        icon: "success",
+        title: "Uspešna prijava!",
+        text: "Dobrodošli nazad!",
+        confirmButtonText: "OK",
+        timer: 1000,
+        timerProgressBar: true,
+      });
       navigate("/");
     } catch (error) {
-      setMessage("Please provide vaild email and password");
+      setMessage("Molimo unesite ispravan email i šifru.");
       console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Greška!",
+        text: "Molimo unesite ispravan email i šifru.",
+        confirmButtonText: "U redu",
+      });
     }
   };
 
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle();
-      alert("Login successfull!");
+      Swal.fire({
+        icon: "success",
+        title: "Uspešna prijava!",
+        text: "Prijavljeni ste pomoću Google naloga.",
+        confirmButtonText: "OK",
+      });
       navigate("/");
     } catch (error) {
-      alert("Sign up with Google failed.");
       console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Neuspešno!",
+        text: "Prijava pomoću Google naloga nije uspela.",
+        confirmButtonText: "U redu",
+      });
     }
   };
 
   return (
-    <div className=" h-[calc(100vh-120px)] border flex justify-center items-center">
+    <div className="h-[calc(100vh-120px)] border flex justify-center items-center">
       <div className="w-full max-w-sm mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <h2 className="text-xl font-semibold mb-4">Uloguj se</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -81,7 +104,7 @@ function Login() {
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Login
+              Prijavi se
             </button>
           </div>
         </form>
@@ -89,7 +112,7 @@ function Login() {
           Nemaš nalog?
           <Link to="/register" className="text-blue-500 hover:text-blue-800">
             {" "}
-            Prijavi se
+            Registruj se
           </Link>
         </p>
         <div className="mt-4">

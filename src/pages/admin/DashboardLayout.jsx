@@ -24,7 +24,7 @@ const DashboardLayout = () => {
               href="#"
               className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg"
             >
-              <span className="sr-only">Folders</span>
+              <span className="sr-only">Folderi</span>
               <svg
                 aria-hidden="true"
                 fill="none"
@@ -44,7 +44,7 @@ const DashboardLayout = () => {
               to="/dashboard"
               className="inline-flex items-center justify-center py-3 text-purple-600 bg-white rounded-lg"
             >
-              <span className="sr-only">Dashboard</span>
+              <span className="sr-only">Kontrolna Tabla</span>
               <svg
                 aria-hidden="true"
                 fill="none"
@@ -64,20 +64,20 @@ const DashboardLayout = () => {
               to="/dashboard/add-new-soap"
               className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg"
             >
-              <span className="sr-only">Add Soap</span>
+              <span className="sr-only">Kreiraj proizvod</span>
               <HiViewGridAdd className="h-6 w-6" />
             </Link>
             <Link
               to="/dashboard/manage-soaps"
               className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg"
             >
-              <span className="sr-only">Documents</span>
+              <span className="sr-only">Dokumenti</span>
               <MdOutlineManageHistory className="h-6 w-6" />
             </Link>
           </nav>
           <div className="inline-flex items-center justify-center h-20 w-20 border-t border-gray-700">
             <button className="p-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
-              <span className="sr-only">Settings</span>
+              <span className="sr-only">Podešavanja</span>
               <svg
                 aria-hidden="true"
                 fill="none"
@@ -105,7 +105,7 @@ const DashboardLayout = () => {
       <div className="flex-grow text-gray-800">
         <header className="flex items-center h-20 px-6 sm:px-10 bg-white">
           <button className="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
-            <span className="sr-only">Menu</span>
+            <span className="sr-only">Meni</span>
             <svg
               aria-hidden="true"
               fill="none"
@@ -143,14 +143,14 @@ const DashboardLayout = () => {
           </div>
           <div className="flex flex-shrink-0 items-center ml-auto">
             <button className="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
-              <span className="sr-only">User Menu</span>
+              <span className="sr-only">Korisnički meni</span>
               <div className="hidden md:flex md:flex-col md:items-end md:leading-tight">
-                <span className="font-semibold">Grace Simmons</span>
-                <span className="text-sm text-gray-600">Lecturer</span>
+                <span className="font-semibold">Ime i prezime</span>
+                <span className="text-sm text-gray-600">Administrator</span>
               </div>
               <span className="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
                 <img
-                  src="https://randomuser.me/api/portraits/women/68.jpg"
+                  src="https://randomuser.me/api/portraits/men/13.jpg"
                   alt="user profile photo"
                   className="h-full w-full object-cover"
                 />
@@ -170,7 +170,7 @@ const DashboardLayout = () => {
             </button>
             <div className="border-l pl-3 ml-3 space-x-1">
               <button className="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
-                <span className="sr-only">Notifications</span>
+                <span className="sr-only">Obaveštenja</span>
                 <span className="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-red-500 rounded-full"></span>
                 <span className="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-red-500 rounded-full animate-ping"></span>
                 <svg
@@ -192,7 +192,7 @@ const DashboardLayout = () => {
                 onClick={handleLogout}
                 className="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full"
               >
-                <span className="sr-only">Log out</span>
+                <span className="sr-only">Odjava</span>
                 <svg
                   aria-hidden="true"
                   fill="none"
@@ -214,8 +214,8 @@ const DashboardLayout = () => {
         <main className="p-6 sm:p-10 space-y-6 ">
           <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
             <div className="mr-6">
-              <h1 className="text-4xl font-semibold mb-2">Dashboard</h1>
-              <h2 className="text-gray-600 ml-0.5">Book Store Inventory</h2>
+              <h1 className="text-4xl font-semibold mb-2">Kontrolna tabla</h1>
+              <h2 className="text-gray-600 ml-0.5">Invertar proizvoda</h2>
             </div>
             <div className="flex flex-col md:flex-row items-start justify-end -mb-3">
               <Link
@@ -236,7 +236,7 @@ const DashboardLayout = () => {
                     d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                   />
                 </svg>
-                Manage Books
+                Upravljaj proizvodima
               </Link>
               <Link
                 to="/dashboard/add-new-soap"
@@ -256,7 +256,7 @@ const DashboardLayout = () => {
                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                   />
                 </svg>
-                Add New Book
+                Kreiraj novi proizvod
               </Link>
             </div>
           </div>
