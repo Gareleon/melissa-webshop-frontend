@@ -14,8 +14,6 @@
 
 .swiper-slide img {
   display: block;
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
@@ -45,6 +43,19 @@
 
 .html {
   scroll-behavior: smooth;
+}
+
+nav div a:hover {
+  @apply text-cyan-800;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, rgba(255, 195, 0), rgba(16, 185, 129));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  transition: background 0.3s ease;
 }
 
 /* * {

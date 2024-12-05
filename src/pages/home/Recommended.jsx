@@ -10,12 +10,21 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useFetchAllSoapsQuery } from "../../redux/features/soaps/soapsApi";
+import Loading from "../../components/Loading";
 
 function Recommended() {
-  const { data: soaps = [] } = useFetchAllSoapsQuery();
+  const { data: soaps = [], isLoading } = useFetchAllSoapsQuery();
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="pb-16">
-      <h2 className="text-3xl font-semibold mb-6">Preporučeno za tebe</h2>
+      <div className="h-fit w-fit text-center sm:text-left">
+        <h2 className="text-secondary text-3xl font-bold ">
+          Preporučeno za tebe
+        </h2>
+        <div className="h-1 w-full bg-gradient-primary-secondary mb-6 mt-1"></div>
+      </div>
       <Swiper
         navigation={true}
         slidesPerView={1}
@@ -30,11 +39,11 @@ function Recommended() {
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 50,
           },
           1250: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 50,
           },
         }}

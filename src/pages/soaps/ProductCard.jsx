@@ -1,5 +1,5 @@
 import React from "react";
-import { FiShoppingCart } from "react-icons/fi";
+import { FiHeart, FiShoppingCart } from "react-icons/fi";
 import { getImgUrl } from "../../utils/getImgUrl";
 import { Link } from "react-router";
 import { useDispatch } from "react-redux";
@@ -13,42 +13,54 @@ function ProductCard({ soap }) {
   };
 
   return (
-    <div className=" rounded-lg transition-shadow duration-300">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:h-72  sm:justify-center gap-2">
-        <div className="sm:h-72 sm:flex-shrink-0 border rounded-md overflow-hidden">
-          <Link to={`/soaps/${soap._id}`}>
+    <div className="p-2 rounded-md transition-shadow duration-300 border h-fit w-fit flex justify-center items-center">
+      {/* sm:flex-row sm:items-center sm:h-72 sm:justify-center */}
+      <div className="flex flex-col gap-2 h-fit w-[17rem]">
+        {/*Image Column*/}
+        <div className="flex justify-center items-center h-[15rem] px-1 rounded-md overflow-hidden border">
+          <Link
+            to={`/soaps/${soap._id}`}
+            className="w-fit h-fit rounded-md hover:scale-125 duration-300 overflow-hidden"
+          >
             <img
               src={`${getImgUrl(soap?.coverImage)}`}
               alt={soap?.title}
-              className="img-fluid md:h-[18rem] md:w-[15rem]  bg-cover p-2 rounded-md cursor-pointer hover:scale-105 transition-all duration-200"
+              className="w-full h-full"
             />
           </Link>
         </div>
-
-        <div className="h-full grid grid-rows-3 grid-cols-1 justify-between items-center gap-2">
+        {/*Text Column*/}
+        <div className="h-fit w-fit grid grid-rows-3 grid-cols-1 justify-around items-center">
           <Link to={`/soaps/${soap._id}`}>
-            <h3 className="text-xl font-semibold hover:text-secondary mb-3">
+            <h3 className="text-xl font-semibold hover:text-secondary">
               {soap?.title}
             </h3>
           </Link>
-          <p className="text-gray-600 mb-5">
+          <p className="text-gray-600">
             {soap?.description?.length > 80
               ? `${soap?.description.slice(0, 80)}...`
               : soap?.description}
           </p>
-          <p className="font-medium mb-5">
+          <p className="font-medium">
             {soap?.newPrice} {" RSD"}
             <span className="line-through font-normal ml-2">
               {soap?.oldPrice} {" RSD"}
             </span>
           </p>
-          <div className="flex justify-center items-center">
+          {/*Buttons*/}
+          <div className="flex justify-start items-center">
             <button
               onClick={() => handleAddToCart(soap)}
-              className="bg-primary h-fit w-fit text-white rounded-md p-3 flex items-center gap-1 hover:text-white hover:bg-secondary "
+              className="bg-primary h-fit w-fit text-white rounded-md p-3 flex items-center gap-1 hover:text-white hover:bg-secondary duration-200"
             >
               <FiShoppingCart className="size-7" />
               <span className="font-semibold">Dodaj u korpu</span>
+            </button>
+            <button
+              //onClick={() => handleAddToFavorites(soap)}
+              className=" h-fit w-fit text-pink-500 p-1 flex items-center hover:text-fuchsia-500 hover:scale-110 duration-150 ml-5"
+            >
+              <FiHeart className="size-11" />
             </button>
           </div>
         </div>

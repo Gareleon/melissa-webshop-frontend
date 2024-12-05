@@ -15,6 +15,7 @@ import DashboardHome from "../pages/admin/DashboardHome";
 import ManageSoaps from "../pages/admin/manage-soaps/ManageSoaps";
 import AddSoap from "../pages/admin/addSoap/addSoap";
 import EditSoap from "../pages/admin/editSoap/EditSoap";
+import Favotires from "../pages/favorites/Favotires";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <div>About</div>,
+      },
+      {
+        path: "/favorites",
+        element: <Favotires />,
       },
       {
         path: "/login",

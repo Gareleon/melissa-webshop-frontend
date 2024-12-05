@@ -10,7 +10,7 @@ import { useAuth } from "../context/AuthContext";
 
 const userNavigation = [
   { name: "Kontrolna tabla", href: "/dashboard" },
-  { name: "Porudžbine", href: "/orders" },
+  { name: "Moje porudžbine", href: "/orders" },
   { name: "Korpa", href: "/cart" },
   { name: "Plaćanje", href: "/check-out" },
 ];
@@ -42,20 +42,20 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <header className="max-w-screen-2xl mx-auto px-4 py-6 fixed-top">
-      <nav className="flex justify-between items-center">
+    <header className="fixed top-0 left-0 right-0 z-50  bg-gradient-primary-secondary rounded-sm shadow-lg ">
+      <nav className="flex justify-between items-center  max-w-screen-2xl mx-auto px-4 py-2 text-white ">
         {/*Left Side*/}
         <div className="flex justify-evenly items-center md:gap-16 gap-1">
           <Link to="/">
             <FaBars className="size-6" />
           </Link>
           {/*Search Input*/}
-          <div className="relative sm:w-72 w-40 space-x-2">
+          <div className="hidden sm:block relative sm:w-72 w-40 space-x-2 ">
             <BiSearchAlt className="size-5 absolute top-2.5 inline-block left-3" />
             <input
               type="text"
               placeholder="Pretraži proizvode"
-              className="bg-[#EAEAEA] w-full lg:text-[1rem] py-2 md:px-8 pl-7 rounded-md focus:outline-none text-[0.9rem]"
+              className=" bg-slate-800 bg-opacity-30 placeholder:text-slate-200 w-full lg:text-[1rem] py-2 md:px-8 pl-7 rounded-md focus:outline-none text-[0.9rem]"
             />
           </div>
         </div>
@@ -68,7 +68,9 @@ export const Navbar = () => {
                   src="https://randomuser.me/api/portraits/men/13.jpg"
                   alt="Avatar user image"
                   className={`size-7 rounded-full ${
-                    currentUser ? "ring-2 ring-green-500" : ""
+                    currentUser
+                      ? "ring-2 ring-primary hover:ring-cyan-700 duration-200"
+                      : ""
                   }`}
                 />
               </button>
@@ -78,7 +80,7 @@ export const Navbar = () => {
                   ref={dropdownRef} // Assigning the ref to the dropdown
                   className="absolute top-9 right-0 mt-2 w-48 bg-white shadow-lg rounded-md z-40"
                 >
-                  <ul className="py-2">
+                  <ul className="py-2 text-gray-900 ">
                     {userNavigation.map((item) => (
                       <li key={item.name}>
                         <Link
@@ -92,7 +94,7 @@ export const Navbar = () => {
                     ))}
                     <li>
                       <button
-                        className="w-full text-left px-4 py-2 block text-sm hover:bg-slate-100"
+                        className="w-full text-left px-4 py-2 block text-sm hover:bg-slate-100 hover:text-red-500"
                         onClick={handleLogOut}
                       >
                         Odjavi se
@@ -104,13 +106,14 @@ export const Navbar = () => {
             </>
           ) : (
             <Link to="/login">
-              <FaRegUser className="size-6" />
+              <FaRegUser className="size-7" />
             </Link>
           )}
-
-          <button className="hidden sm:block">
-            <FaRegHeart className="size-6" />
-          </button>
+          <Link to="/favorites">
+            <button className="hidden sm:block">
+              <FaRegHeart className="size-7" />
+            </button>
+          </Link>
           <Link
             to="/cart"
             className="relative bg-primary pl-2 pr-5 pt-3 py-1 w-fit flex items-center rounded-sm text-white"

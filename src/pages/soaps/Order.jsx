@@ -18,7 +18,7 @@ function Order() {
   console.log(orders);
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 min-h-96">
       <h1 className=" text-2xl font-semibold mb-4">Tvoje porudžbine</h1>
       {orders.length === 0 ? (
         <div>Nema pronađenih proudžbina.</div>

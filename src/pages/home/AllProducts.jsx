@@ -2,27 +2,16 @@ import React, { useEffect, useState, useMemo } from "react";
 import ProductCard from "../soaps/ProductCard";
 import { useFetchAllSoapsQuery } from "../../redux/features/soaps/soapsApi";
 import Loading from "../../components/Loading";
-
 // Categories with better handling of values
-const categories = [
-  { label: "Izaberi kategoriju", value: "" },
-  { label: "Aromaterapija", value: "aromaterapija" },
-  { label: "Piling", value: "piling" },
-  { label: "Osvežavajući", value: "osvežavajući" },
-  { label: "Detoks", value: "detoks" },
-  { label: "Hidratantni", value: "hidratantni" },
-  { label: "Umirujući", value: "umirujući" },
-  { label: "Luksuzni", value: "luksuzni" },
-  { label: "Energizujući", value: "energizujući" },
-];
+import categories from "./data";
 
 function AllProducts() {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [loadMore, setLoadMore] = useState(6);
+  const [loadMore, setLoadMore] = useState(8);
   const { data: soaps = [], isLoading } = useFetchAllSoapsQuery();
 
   function loadMoreProducts() {
-    setLoadMore((prevLoadMore) => prevLoadMore + 6);
+    setLoadMore((prevLoadMore) => prevLoadMore + 8);
   }
 
   // Optimized filtering using useMemo
@@ -38,28 +27,35 @@ function AllProducts() {
 
   return (
     <div className="">
-      <h2 className="text-3xl font-semibold mb-6">Svi proizvodi</h2>
-      {/* Category Filter */}
-      <div className="mb-8 flex items-center">
-        <select
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          name="category"
-          id="category"
-          className="border bg-slate-200 border-gray-200 rounded-md p-2 focus:outline-none"
-        >
-          {categories.map((category, index) => (
-            <option key={index} value={category.value}>
-              {category.label}
-            </option>
-          ))}
-        </select>
+      {/*Heading and Category Filter*/}
+      <div className="flex flex-col sm:flex-row justify-between items-center w-full h-fit">
+        <div className="h-fit w-fit">
+          <h2 className="text-secondary text-3xl font-bold ">Svi proizvodi</h2>
+          <div className="h-1 w-full bg-gradient-primary-secondary mb-6 mt-1"></div>
+        </div>
+
+        {/* Category Filter */}
+        <div className="mb-8 flex items-center">
+          <select
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            name="category"
+            id="category"
+            className="border bg-slate-200 border-gray-200 rounded-md p-1 text-gray-800 focus:outline-none "
+          >
+            {categories.map((category, index) => (
+              <option key={index} value={category.value}>
+                {category.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
-      <div className="">
+      <div className="w-full sm:px-10">
         {/* Product Grid */}
         <div
           id="products-container"
-          className="inline-grid h-fit grid-rows-2 md:gap-3 lg:grid-cols-2 2xl:grid-cols-3 w-full items-center justify-center gap-4 d-block"
+          className="inline-grid h-fit w-full grid-rows-2 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 xl:gap-y-8 items-center justify-evenly gap-4"
         >
           {filteredSoaps.length > 0 ? (
             filteredSoaps

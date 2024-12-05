@@ -5,9 +5,9 @@ import { Link } from "react-router";
 
 function Footer() {
   return (
-    <footer className="">
+    <footer className="bg-footer-bg bg-cover">
       {/* Basic Footer Section */}
-      <div className="bg-gray-800 flex-row pl-8 md:flex md:pl-0 justify-evenly align-middle  items-center mt-10 py-5 text-white">
+      <div className="bg-gray-900 bg-opacity-70 flex-row pl-8 md:flex md:pl-0 justify-evenly align-middle  items-center mt-10 py-5 text-white">
         {/* Mobile Number */}
         <div className="mb-4 md:mb-0">
           <div className="size-9 inline-block mr-4">
@@ -26,7 +26,9 @@ function Footer() {
             </svg>
           </div>
           <div className="inline-block">
-            <Link to="#">+381 601519995</Link>
+            <Link to="tel:+381601519995" className="hover:text-primary">
+              +381 601519995
+            </Link>
             <p>Pon-Pet 9-18h</p>
           </div>
         </div>
@@ -50,8 +52,10 @@ function Footer() {
               <path d="M19 18v.01"></path>
             </svg>
           </div>
-          <div className="inline-block">
-            <Link to="#">SAVE ŠUMANOVIĆA 5</Link>
+          <div className="inline-block ">
+            <Link to="#" className="hover:text-primary">
+              SAVE ŠUMANOVIĆA 5
+            </Link>
             <p>37000, Kruševac, RS</p>
           </div>
         </div>
@@ -73,30 +77,35 @@ function Footer() {
             </svg>
           </div>
           <div className="inline-block">
-            <Link to="#">+381 653317335</Link>
-            <p>Online support</p>
+            <Link
+              to="mailto:aleksandricmilos@gmail.com"
+              className="hover:text-primary"
+            >
+              aleksandricmilos@gmail.com
+            </Link>
+            <p>Korisnička podrška</p>
           </div>
         </div>
       </div>
 
       {/* Social Media Section */}
-      <div className=" bg-gray-400 text-white">
+      <div className=" bg-gray-400 bg-opacity-70 text-white">
         <div className=" py-4 text-center flex-row justify-center items-center md:flex md:justify-evenly">
           <div className="">
             <p>Connect with us on social media</p>
           </div>
           <div className="flex gap-5 mt-3 mb-2 justify-center align-middle">
             <Link to="">
-              <FaFacebook className="size-7" />
+              <FaFacebook className="size-7 hover:text-gray-900" />
             </Link>
             <Link to="">
-              <FaSquareInstagram className="size-7" />
+              <FaSquareInstagram className="size-7 hover:text-gray-900" />
             </Link>
             <Link to="">
-              <FaLinkedin className="size-7" />
+              <FaLinkedin className="size-7 hover:text-gray-900" />
             </Link>
             <Link to="">
-              <FaYoutube className="size-7" />
+              <FaYoutube className="size-7 hover:text-gray-900" />
             </Link>
           </div>
         </div>
@@ -104,13 +113,10 @@ function Footer() {
 
       {/* Company Info */}
 
-      <div className="grid grid-cols-1 grid-rows-1 py-5 px-4 w-full  gap-5 md:grid-cols-2 md:justify-center lg:flex lg:justify-evenly md:px-10  bg-gray-800 text-white ">
+      <div className="bg-gray-900 bg-opacity-70 grid grid-cols-1 grid-rows-1 py-5 px-4 w-full  gap-5 md:grid-cols-2 md:justify-center lg:flex lg:justify-evenly md:px-10 text-white ">
         <div className="lg:col-span-2 lg:w-[25%]">
           <h5 className="">HEMIJSKO-SAPUNSKA LABORATORIJA MELISSA</h5>
-          <hr
-            className="text-black mb-3"
-            style={{ width: "60px", height: "2px" }}
-          />
+          <hr className="bg-white mb-3 w-[60px] h-[2px]" />
           <p className="">
             Hemijsko-sapunska laboratorija "Melissa" (11.07.2015, god.),je
             projekat mladih čarapana na inicijativu Aleksandrić Miloša, osnivača
@@ -125,49 +131,35 @@ function Footer() {
           />
           <ul className="">
             <li>
-              <Link to="">Link</Link>
-            </li>
-            <li>
-              <Link to="">Link</Link>
-            </li>
-            <li>
-              <Link to="">Link</Link>
+              <Link to="" className="hover:text-primary">
+                Link
+              </Link>
             </li>
           </ul>
         </div>
         <div className="">
           <h5 className="">Korisni linkovi</h5>
-          <hr
-            className="bg-white mb-3"
-            style={{ width: "60px", height: "2px" }}
-          />
+          <hr className="bg-white mb-3 w-[60px] h-[2px]" />
           <ul className="">
-            <li>
-              <Link to="">Link</Link>
-            </li>
-            <li>
-              <Link to="">Link</Link>
-            </li>
-            <li>
-              <Link to="">Link</Link>
-            </li>
-            <li>
-              <Link to="">Pomoć</Link>
-            </li>
+            <Link to="" className="hover:text-primary">
+              Link
+            </Link>
           </ul>
         </div>
         <div className="">
           <h5 className="">Kontakt</h5>
-          <hr
-            className="bg-white mb-3"
-            style={{ width: "60px", height: "2px" }}
-          />
+          <hr className="bg-white mb-3 w-[60px] h-[2px]" />
           <ul className="">
             <li>
-              <Link to="tel:+381653317335">+381/601519995</Link>
+              <Link to="tel:+381653317335" className="hover:text-primary">
+                +381/601519995
+              </Link>
             </li>
             <li>
-              <Link to="mailto:aleksandricmilos@gmail.com">
+              <Link
+                to="mailto:aleksandricmilos@gmail.com"
+                className="hover:text-primary"
+              >
                 aleksandricmilos@gmail.com
               </Link>
             </li>
@@ -175,7 +167,7 @@ function Footer() {
         </div>
       </div>
       <hr className="bg-white" />
-      <div className="bg-gray-950 text-white text-center py-4 fw-light">
+      <div className="bg-gray-950 bg-opacity-95 text-white text-center py-4 fw-light">
         <p>
           &copy; 2018-2024 HEMIJSKO-SAPUNSKA LABORATORIJA MELISSA. Sva prava
           zadržana. <br />

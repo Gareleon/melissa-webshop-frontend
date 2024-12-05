@@ -6,22 +6,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useFetchAllSoapsQuery } from "../../redux/features/soaps/soapsApi";
-
-const categories = [
-  { label: "Izaberi kategoriju", value: "" },
-  { label: "Aromaterapija", value: "aromaterapija" },
-  { label: "Piling", value: "piling" },
-  { label: "Osvežavajući", value: "osvežavajući" },
-  { label: "Detoks", value: "detoks" },
-  { label: "Hidratantni", value: "hidratantni" },
-  { label: "Umirujući", value: "umirujući" },
-  { label: "Luksuzni", value: "luksuzni" },
-  { label: "Energizujući", value: "energizujući" },
-];
+import categories from "./data";
+import Loading from "../../components/Loading";
 
 function TopSelling() {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { data: soaps = [] } = useFetchAllSoapsQuery();
+  const { data: soaps = [], isLoading } = useFetchAllSoapsQuery();
 
   const filteredSoaps = useMemo(() => {
     return selectedCategory === ""
@@ -29,23 +19,35 @@ function TopSelling() {
       : soaps.filter((soap) => soap.category === selectedCategory);
   }, [soaps, selectedCategory]);
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
-    <div className="py-16">
-      <h2 className="text-3xl font-semibold mb-6">Najprodavanije</h2>
-      <div className="mb-8 flex items-center">
-        <select
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          name="category"
-          id="category"
-          className="border bg-slate-200 border-gray-200 rounded-md p-2 focus:outline-none"
-        >
-          {categories.map((category, index) => (
-            <option key={index} value={category.value}>
-              {category.label}
-            </option>
-          ))}
-        </select>
+    <div className="py-10">
+      {/*Heading and Category Filter*/}
+      <div className="flex flex-col sm:flex-row justify-between items-center w-full h-fit">
+        <div className="h-fit w-fit">
+          <h2 className="text-secondary text-3xl font-bold ">Najprodavanije</h2>
+          <div className="h-1 w-full bg-gradient-primary-secondary mb-6 mt-1"></div>
+        </div>
+        {/* Category Filter */}
+        <div className="w-fit h-fit mb-8 flex items-center">
+          <select
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            name="category"
+            id="category"
+            className="border bg-slate-200 border-gray-200 rounded-md p-1 text-gray-800 focus:outline-none "
+          >
+            {categories.map((category, index) => (
+              <option key={index} value={category.value}>
+                {category.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
+      {/*SWIPER PREVIEW*/}
       <div>
         <Swiper
           navigation={true}
@@ -54,8 +56,8 @@ function TopSelling() {
           breakpoints={{
             640: { slidesPerView: 1, spaceBetween: 20 },
             768: { slidesPerView: 2, spaceBetween: 40 },
-            1024: { slidesPerView: 2, spaceBetween: 50 },
-            1250: { slidesPerView: 3, spaceBetween: 50 },
+            1024: { slidesPerView: 3, spaceBetween: 50 },
+            1250: { slidesPerView: 4, spaceBetween: 50 },
           }}
           modules={[Pagination, Navigation]}
           className="mySwiper"
