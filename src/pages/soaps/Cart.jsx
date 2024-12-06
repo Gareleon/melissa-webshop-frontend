@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router";
 import { getImgUrl } from "../../utils/getImgUrl";
 import { clearCart, removeFromCart } from "../../redux/features/cart/cartSlice";
+import { BsArrowRight } from "react-icons/bs";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -22,9 +23,9 @@ function Cart() {
       <div className="flex mt-12 h-full flex-col overflow-hidden bg-white shadow-xl">
         <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
           <div className="flex items-start justify-between">
-            <div className="text-lg font-medium text-gray-900">
+            <h1 className="text-xl md:text-2xl font-medium text-gray-900">
               Korpa za kupovinu
-            </div>
+            </h1>
             <div className="ml-3 flex h-7 items-center ">
               <button
                 type="button"
@@ -82,7 +83,16 @@ function Cart() {
                   ))}
                 </ul>
               ) : (
-                <p>Korpa je prazna.</p>
+                <div className="min-h-96 flex flex-col justify-center items-center text-xl">
+                  <Link
+                    to="/"
+                    className="font-medium text-primary hover:text-secondary"
+                  >
+                    <p>
+                      Dodaj proizvode <BsArrowRight className="inline-block" />
+                    </p>
+                  </Link>
+                </div>
               )}
             </div>
           </div>

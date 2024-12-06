@@ -30,15 +30,15 @@
 }
 
 .btn-primary {
-  @apply bg-primary  px-12 py-2 rounded-md text-base font-secondary font-bold hover:bg-secondary hover:text-white transition-all duration-200 cursor-pointer;
+  @apply bg-primary  px-12 py-2 rounded-md text-base lg:text-2xl  font-secondary font-bold hover:bg-secondary hover:text-white transition-all duration-200 cursor-pointer;
 }
 
 .btn-secondary {
-  @apply bg-secondary text-white px-12 py-2 rounded-md text-base font-secondary font-bold hover:bg-emerald-800 hover:text-white transition-all duration-200 cursor-pointer;
+  @apply bg-secondary text-white px-12 py-2 rounded-md text-base lg:text-2xl  font-secondary font-bold hover:bg-emerald-800 hover:text-white transition-all duration-200 cursor-pointer;
 }
 
 .btn-invalid {
-  @apply bg-red-500 text-white px-12 py-2 rounded-md text-base font-secondary font-bold hover:bg-red-800 hover:text-white transition-all duration-200 cursor-not-allowed;
+  @apply bg-red-500 text-white px-12 py-2 rounded-md text-base lg:text-2xl  font-secondary font-bold hover:bg-red-800 hover:text-white transition-all duration-200 cursor-not-allowed;
 }
 
 .html {

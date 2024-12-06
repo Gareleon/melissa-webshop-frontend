@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetOrderByEmailQuery } from "../../redux/features/orders/ordersAPI";
 import { useAuth } from "../../context/AuthContext";
+import Loading from "../../components/Loading";
 
 function Order() {
   const { currentUser } = useAuth();
@@ -10,12 +11,12 @@ function Order() {
     isError,
   } = useGetOrderByEmailQuery(currentUser.email);
   if (isLoading) {
-    return <div>Učitavanje...</div>;
+    return <Loading />;
   }
   if (isError) {
     return <div>Greška prilikom pribavljanja podatka o porudžbini.</div>;
   }
-  console.log(orders);
+  //console.log(orders);
 
   return (
     <div className="container mx-auto p-6 min-h-96">

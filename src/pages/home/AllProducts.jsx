@@ -55,7 +55,7 @@ function AllProducts() {
         {/* Product Grid */}
         <div
           id="products-container"
-          className="inline-grid h-fit w-full grid-rows-2 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 xl:gap-y-8 items-center justify-evenly gap-4"
+          className="inline-grid h-fit w-full grid-rows-2 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 xl:gap-y-8 items-start justify-evenly gap-4"
         >
           {filteredSoaps.length > 0 ? (
             filteredSoaps

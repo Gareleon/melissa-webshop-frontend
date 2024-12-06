@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import { FaBars } from "react-icons/fa6";
 import { BiSearchAlt } from "react-icons/bi";
+import { BsSuitHeartFill } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoMdCart } from "react-icons/io";
@@ -16,6 +17,7 @@ const userNavigation = [
 ];
 
 export const Navbar = () => {
+  const favoritesItems = useSelector((state) => state.favorites.favoritesItems);
   const [userDropDown, setUserDropDown] = useState(false);
   const numberOfCartItems = useSelector((state) => state.cart.cartItems);
   const { currentUser, logOut } = useAuth();
@@ -110,8 +112,17 @@ export const Navbar = () => {
             </Link>
           )}
           <Link to="/favorites">
-            <button className="hidden sm:block">
-              <FaRegHeart className="size-7" />
+            <button className="relative">
+              {favoritesItems?.length === 0 ? (
+                <FaRegHeart className="size-7" />
+              ) : (
+                <>
+                  <BsSuitHeartFill className="size-8 sm:size-10 hover:text-fuchsia-500" />
+                  <p className="hidden sm:block absolute text-fuchsia-500 top-0 right-[0.1rem] sm:fs-3 font-bold">
+                    {favoritesItems.length}
+                  </p>
+                </>
+              )}
             </button>
           </Link>
           <Link

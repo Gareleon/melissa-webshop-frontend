@@ -1,15 +1,23 @@
 import React from "react";
 import { FiHeart, FiShoppingCart } from "react-icons/fi";
+import { BsSuitHeartFill } from "react-icons/bs";
 import { getImgUrl } from "../../utils/getImgUrl";
 import { Link } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/features/cart/cartSlice";
+import { addToFavorites } from "../../redux/features/favorites/favoritesSlice";
 
 function ProductCard({ soap }) {
   const dispatch = useDispatch();
+  const favoritesItems = useSelector((state) => state.favorites.favoritesItems);
+  const itemInFavorites = favoritesItems.find((item) => item._id === soap._id);
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
+  };
+
+  const handleAddToFavorites = (product) => {
+    dispatch(addToFavorites(product));
   };
 
   return (
@@ -57,10 +65,14 @@ function ProductCard({ soap }) {
               <span className="font-semibold">Dodaj u korpu</span>
             </button>
             <button
-              //onClick={() => handleAddToFavorites(soap)}
+              onClick={() => handleAddToFavorites(soap)}
               className=" h-fit w-fit text-pink-500 p-1 flex items-center hover:text-fuchsia-500 hover:scale-110 duration-150 ml-5"
             >
-              <FiHeart className="size-11" />
+              {itemInFavorites ? (
+                <BsSuitHeartFill className="size-11" />
+              ) : (
+                <FiHeart className="size-11" />
+              )}
             </button>
           </div>
         </div>

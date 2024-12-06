@@ -6,9 +6,15 @@ import { useAuth } from "../../context/AuthContext";
 import { useCreateOrderMutation } from "../../redux/features/orders/ordersAPI";
 import Swal from "sweetalert2";
 import Loading from "../../components/Loading";
+import { clearCart } from "../../redux/features/cart/cartSlice";
+import { useDispatch } from "react-redux"; // Import dispatch
 
 function Checkout() {
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const dispatch = useDispatch(); // Initialize dispatch
+  const handleClearCart = useCallback(() => {
+    dispatch(clearCart());
+  }, [dispatch]); // Memoize the function to prevent unnecessary re-renders
   const totalPrice = cartItems
     .reduce((acc, item) => acc + item.newPrice, 0)
     .toFixed(2);
@@ -41,16 +47,17 @@ function Checkout() {
     };
 
     try {
-      await createOrder(newOrder).unwrap();
+      await createOrder(newOrder).unwrap(); // Wait for the order creation
       Swal.fire({
         title: "Porudžbina je uspešno kreirana!",
-        timer: 1500, // The alert will auto-close after 3 seconds
-        timerProgressBar: true, // Shows a progress bar while the timer runs
+        timer: 1500,
+        timerProgressBar: true,
         willClose: () => {
           console.log("The alert is closed!");
         },
       });
-      navigate("/orders");
+      handleClearCart(); // Clear the cart after successful order creation
+      navigate("/orders"); // Redirect to the orders page
     } catch (error) {
       console.error("Error:", error);
       if (error?.data) {
