@@ -12,9 +12,7 @@ const AddSoap = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const [imageFile, setimageFile] = useState(null);
   const [AddSoap, { isLoading, isError }] = useAddSoapMutation();
-  const [imageFileName, setimageFileName] = useState("");
   const onSubmit = async (data) => {
     const newSoapData = {
       ...data,
@@ -31,21 +29,12 @@ const AddSoap = () => {
         timerProgressBar: true, // Optional: shows a progress bar for the timer
       });
       reset();
-      setimageFileName("");
-      setimageFile(null);
     } catch (error) {
       console.error(error);
       alert("Neuspešno kreiran proizvod. Pokušajte ponovo.");
     }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setimageFile(file);
-      setimageFileName(file.name);
-    }
-  };
   return (
     <div className="max-w-lg   mx-auto md:p-6 p-3 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">
@@ -124,18 +113,13 @@ const AddSoap = () => {
 
         {/* Cover Image Upload */}
         <div className="mb-4">
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Slika
-          </label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="mb-2 w-full"
+          <InputField
+            label="Slika"
+            name="CoverImage"
+            type="text"
+            placeholder="Link do slike"
+            register={register}
           />
-          {imageFileName && (
-            <p className="text-sm text-gray-500">Izabrano: {imageFileName}</p>
-          )}
         </div>
 
         {/* Submit Button */}

@@ -6,7 +6,7 @@ function AdminRoute({ children }) {
   if (!token) {
     return <Navigate to="/melissa-admin" />;
   }
-  console.log(token);
+  //console.log(token);
   return children ? children : <Outlet />;
 }
 

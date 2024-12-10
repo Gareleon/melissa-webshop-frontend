@@ -1,111 +1,32 @@
 import { Link, Outlet, useNavigate } from "react-router";
-import { HiViewGridAdd } from "react-icons/hi";
-import { MdOutlineManageHistory } from "react-icons/md";
+import { useRef, useState } from "react";
+import { MdLibraryAdd } from "react-icons/md";
+import { RiDashboardHorizontalFill } from "react-icons/ri";
+import { FaWarehouse } from "react-icons/fa6";
 
 const DashboardLayout = () => {
   const navigate = useNavigate();
+  const menuRef = useRef(null); // Reference to the menu container
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleToggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
   return (
     <section className="flex md:bg-gray-100 min-h-screen overflow-hidden">
-      <aside className="hidden sm:flex sm:flex-col">
-        <Link
-          href="/"
-          className="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500"
-        >
-          <img src="/fav-icon.png" alt="" />
-        </Link>
-        <div className="flex-grow flex flex-col justify-between text-gray-500 bg-gray-800">
-          <nav className="flex flex-col mx-4 my-6 space-y-4">
-            <Link
-              href="#"
-              className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg"
-            >
-              <span className="sr-only">Folderi</span>
-              <svg
-                aria-hidden="true"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
-                />
-              </svg>
-            </Link>
-            <Link
-              to="/dashboard"
-              className="inline-flex items-center justify-center py-3 text-purple-600 bg-white rounded-lg"
-            >
-              <span className="sr-only">Kontrolna Tabla</span>
-              <svg
-                aria-hidden="true"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                />
-              </svg>
-            </Link>
-            <Link
-              to="/dashboard/add-new-soap"
-              className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg"
-            >
-              <span className="sr-only">Kreiraj proizvod</span>
-              <HiViewGridAdd className="h-6 w-6" />
-            </Link>
-            <Link
-              to="/dashboard/manage-soaps"
-              className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg"
-            >
-              <span className="sr-only">Dokumenti</span>
-              <MdOutlineManageHistory className="h-6 w-6" />
-            </Link>
-          </nav>
-          <div className="inline-flex items-center justify-center h-20 w-20 border-t border-gray-700">
-            <button className="p-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
-              <span className="sr-only">Podešavanja</span>
-              <svg
-                aria-hidden="true"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </aside>
       <div className="flex-grow text-gray-800">
-        <header className="flex items-center h-20 px-6 sm:px-10 bg-white">
-          <button className="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
-            <span className="sr-only">Meni</span>
+        <header className="relative h-fit w-full flex justify-center items-center text-gray-500 bg-gray-800 px-2 md:px-5 lg:px-10">
+          {/* Menu button */}
+          <button
+            onClick={handleToggleMenu}
+            className="block flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full"
+          >
+            <span className="sr-only z-50">Meni</span>
             <svg
               aria-hidden="true"
               fill="none"
@@ -121,7 +42,14 @@ const DashboardLayout = () => {
               />
             </svg>
           </button>
-          <div className="relative w-full max-w-md sm:-ml-2">
+          {/* Search bar */}
+          <div
+            className={`absolute left-12 md:left-16 lg:left-24 h-fit w-fit p-1 mt-1 text-gray-500 bg-gray-800 transition-all duration-1000 ease-in-out transform ${
+              isMenuOpen
+                ? "opacity-100 scale-100 translate-x-0"
+                : "opacity-0 scale-95 -translate-x-full pointer-events-none"
+            }`}
+          >
             <svg
               aria-hidden="true"
               viewBox="0 0 20 20"
@@ -141,7 +69,32 @@ const DashboardLayout = () => {
               className="py-2 pl-10 pr-4 w-full border-4 border-transparent placeholder-gray-400 focus:bg-gray-50 rounded-lg"
             />
           </div>
-          <div className="flex flex-shrink-0 items-center ml-auto">
+          {/* Menu items Left side*/}
+          <nav className={`inline-grid grid-cols-3 mx-2 gap-4 `}>
+            <Link
+              to="/dashboard"
+              className="mr-2 inline-block w-fit h-fit text-purple-600 bg-white rounded-lg"
+            >
+              <span className="sr-only">Kontrolna Tabla</span>
+              <RiDashboardHorizontalFill className="size-7" />
+            </Link>
+            <Link
+              to="/dashboard/add-new-soap"
+              className="mr-2 inline-block w-fit h-fit hover:text-gray-400 hover:bg-gray-700  focus:bg-white rounded-lg focus:text-purple-600"
+            >
+              <MdLibraryAdd className="size-7" />
+              <span className="sr-only">Kreiraj proizvod</span>
+            </Link>
+            <Link
+              to="/dashboard/manage-soaps"
+              className="inline-block w-fit h-fit hover:text-gray-400 hover:bg-gray-700  focus:bg-white rounded-lg focus:text-purple-600"
+            >
+              <FaWarehouse className="size-7" />
+              <span className="sr-only"> Upravljaj proizvodima</span>
+            </Link>
+          </nav>
+          {/* Menu items right side */}
+          <div className={` flex flex-shrink-0 items-center ml-auto `}>
             <button className="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
               <span className="sr-only">Korisnički meni</span>
               <div className="hidden md:flex md:flex-col md:items-end md:leading-tight">
@@ -169,25 +122,6 @@ const DashboardLayout = () => {
               </svg>
             </button>
             <div className="border-l pl-3 ml-3 space-x-1">
-              <button className="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
-                <span className="sr-only">Obaveštenja</span>
-                <span className="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-red-500 rounded-full"></span>
-                <span className="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-red-500 rounded-full animate-ping"></span>
-                <svg
-                  aria-hidden="true"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="h-6 w-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                  />
-                </svg>
-              </button>
               <button
                 onClick={handleLogout}
                 className="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full"
@@ -214,7 +148,9 @@ const DashboardLayout = () => {
         <main className="p-6 sm:p-10 space-y-6 ">
           <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
             <div className="mr-6">
-              <h1 className="text-4xl font-semibold mb-2">Kontrolna tabla</h1>
+              <h1 className="text-3xl md:text-4xl font-semibold mb-2">
+                Kontrolna tabla
+              </h1>
               <h2 className="text-gray-600 ml-0.5">Invertar proizvoda</h2>
             </div>
             <div className="flex flex-col md:flex-row items-start justify-end -mb-3">
@@ -240,7 +176,7 @@ const DashboardLayout = () => {
               </Link>
               <Link
                 to="/dashboard/add-new-soap"
-                className="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3"
+                className="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md md:ml-6 mb-3"
               >
                 <svg
                   aria-hidden="true"
