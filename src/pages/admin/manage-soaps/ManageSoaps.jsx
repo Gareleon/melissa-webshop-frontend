@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import {
   useDeleteSoapMutation,
   useFetchAllSoapsQuery,
@@ -7,8 +7,6 @@ import {
 import Swal from "sweetalert2";
 
 const ManageSoaps = () => {
-  const navigate = useNavigate();
-
   const { data: soaps, refetch } = useFetchAllSoapsQuery();
   const [deleteSoap] = useDeleteSoapMutation();
 
@@ -34,11 +32,6 @@ const ManageSoaps = () => {
         showConfirmButton: false,
       });
     }
-  };
-
-  // Handle navigating to Edit Soap page
-  const handleEditClick = (id) => {
-    navigate(`/dashboard/edit-soap/${id}`);
   };
 
   return (
@@ -87,12 +80,12 @@ const ManageSoaps = () => {
                     </div>
 
                     <div className="flex justify-between md:w-1/3 items-center space-x-2">
-                      <button
-                        onClick={() => handleEditClick(soap._id)}
+                      <Link
+                        to={`/dashboard/edit-soap/${soap._id}`}
                         className="text-indigo-600 hover:text-indigo-700 text-xs"
                       >
                         Izmeni
-                      </button>
+                      </Link>
                       <button
                         onClick={() => handleDeleteSoap(soap._id)}
                         className="bg-red-500 py-1 px-4 rounded-full text-white text-xs"
